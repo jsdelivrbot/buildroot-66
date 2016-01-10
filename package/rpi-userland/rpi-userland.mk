@@ -33,16 +33,16 @@ ifeq ($(BR2_PACKAGE_RPI_USERLAND_HELLO),y)
 RPI_USERLAND_CONF_OPTS += -DALL_APPS=ON
 
 define RPI_USERLAND_EXTRA_LIBS_TARGET
-	$(INSTALL) -m 0644 -D \
+	$(INSTALL) -m 0755 -D \
 		$(@D)/build/lib/libilclient.so \
-		$(TARGET_DIR)/usr/lib/libilcient.so
+		$(TARGET_DIR)/usr/lib/libilclient.so
 endef
 RPI_USERLAND_POST_INSTALL_TARGET_HOOKS += RPI_USERLAND_EXTRA_LIBS_TARGET
 
 define RPI_USERLAND_EXTRA_LIBS_STAGING
-	$(INSTALL) -m 0644 -D \
+	$(INSTALL) -m 0755 -D \
 		$(@D)/build/lib/libilclient.so \
-		$(STAGING_DIR)/usr/lib/libilcient.so
+		$(STAGING_DIR)/usr/lib/libilclient.so
 endef
 RPI_USERLAND_POST_INSTALL_STAGING_HOOKS += RPI_USERLAND_EXTRA_LIBS_STAGING
 
