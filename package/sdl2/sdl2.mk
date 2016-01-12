@@ -12,6 +12,8 @@ SDL2_LICENSE_FILES = COPYING.txt
 SDL2_INSTALL_STAGING = YES
 SDL2_CONFIG_SCRIPTS = sdl2-config
 
+SDL2_DEPENDENCIES += libgles
+
 SDL2_CONF_OPTS += \
 	--disable-rpath \
 	--disable-arts \
@@ -19,7 +21,9 @@ SDL2_CONF_OPTS += \
 	--disable-dbus \
 	--disable-pulseaudio \
 	--disable-video-opengl \
-	--disable-video-opengles \
+	--enable-video-opengles \
+	--disable-video-opengles2 \
+	--enable-video-vivante \
 	--disable-video-wayland
 
 # We must enable static build to get compilation successful.
