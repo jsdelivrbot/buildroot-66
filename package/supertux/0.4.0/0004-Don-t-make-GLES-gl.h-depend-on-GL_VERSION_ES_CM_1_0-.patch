@@ -1,0 +1,35 @@
+From dd5345ccb3a69bd87ab5bcd4e7488dae6eaeb326 Mon Sep 17 00:00:00 2001
+From: Julien Olivain <juju@cotds.org>
+Date: Sun, 17 Jan 2016 18:42:03 +0100
+Subject: [PATCH 4/8] Don't make GLES/gl.h depend on GL_VERSION_ES_CM_1_0 since
+ it's defined in it
+
+Signed-off-by: Julien Olivain <juju@cotds.org>
+---
+ src/video/glutil.hpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/video/glutil.hpp b/src/video/glutil.hpp
+index 4ead32d..0b6f919 100644
+--- a/src/video/glutil.hpp
++++ b/src/video/glutil.hpp
+@@ -32,14 +32,14 @@ using namespace gl;
+ 
+ #else
+ 
+-#ifndef GL_VERSION_ES_CM_1_0
++#ifndef HAVE_OPENGLES
+ #  include <GL/glew.h>
+ #endif
+ 
+ #if defined(MACOSX)
+ #  include <OpenGL/gl.h>
+ #  include <OpenGL/glext.h>
+-#elif defined(GL_VERSION_ES_CM_1_0)
++#elif defined(HAVE_OPENGLES)
+ #  include <GLES/gl.h>
+ #  include <GLES/glext.h>
+ #else
+-- 
+2.5.0
+

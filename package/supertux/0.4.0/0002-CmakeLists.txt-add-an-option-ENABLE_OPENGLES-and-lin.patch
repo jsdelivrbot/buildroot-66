@@ -1,0 +1,36 @@
+From 53a6f5af02ec79143b733b9b9faa1792773b0687 Mon Sep 17 00:00:00 2001
+From: Julien Olivain <juju@cotds.org>
+Date: Sun, 17 Jan 2016 18:38:41 +0100
+Subject: [PATCH 2/8] CmakeLists.txt: add an option ENABLE_OPENGLES and link
+ executable GLES_CM
+
+Signed-off-by: Julien Olivain <juju@cotds.org>
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 970a9ec..b780c54 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -123,6 +123,7 @@ SET(HAVE_SDL TRUE)
+ 
+ OPTION(BUILD_TESTS "Build test cases" OFF)
+ OPTION(ENABLE_OPENGL "Enable OpenGL support" ON)
++OPTION(ENABLE_OPENGLES "Enable OpenGLES support" ON)
+ OPTION(GLBINDING_ENABLED "Use glbinding instead of GLEW" OFF)
+ OPTION(GLBINDING_DEBUG_OUTPUT "Enable glbinding debug output for each called OpenGL function" OFF)
+ IF(ENABLE_OPENGL)
+@@ -448,6 +449,9 @@ ELSE()
+     add_executable(supertux2_exe src/main.cpp)
+ ENDIF(WIN32)
+ target_link_libraries(supertux2_exe supertux2_lib)
++IF(ENABLE_OPENGLES)
++    target_link_libraries(supertux2_exe GLES_CM)
++ENDIF(ENABLE_OPENGLES)
+ set_target_properties(supertux2_exe PROPERTIES OUTPUT_NAME supertux2)
+ set_target_properties(supertux2_lib PROPERTIES COMPILE_FLAGS "${SUPERTUX2_EXTRA_WARNING_FLAGS}")
+ 
+-- 
+2.5.0
+

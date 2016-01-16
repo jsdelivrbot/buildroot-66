@@ -1,0 +1,30 @@
+From 1a93b110036b74eb4eab20a0e63f16db6611d93a Mon Sep 17 00:00:00 2001
+From: Julien Olivain <juju@cotds.org>
+Date: Sun, 17 Jan 2016 20:30:01 +0100
+Subject: [PATCH 6/8] gl_texture: don't compile glGenerateMipmap()
+
+Signed-off-by: Julien Olivain <juju@cotds.org>
+---
+ src/video/gl/gl_texture.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/video/gl/gl_texture.cpp b/src/video/gl/gl_texture.cpp
+index 443fa01..5a48256 100644
+--- a/src/video/gl/gl_texture.cpp
++++ b/src/video/gl/gl_texture.cpp
+@@ -158,10 +158,12 @@ GLTexture::GLTexture(SDL_Surface* image) :
+                  GL_UNSIGNED_BYTE, convert->pixels);
+ 
+     // no not use mipmaps
++#if 0
+     if(false)
+     {
+       glGenerateMipmap(GL_TEXTURE_2D);
+     }
++#endif
+ 
+     if(SDL_MUSTLOCK(convert))
+     {
+-- 
+2.5.0
+

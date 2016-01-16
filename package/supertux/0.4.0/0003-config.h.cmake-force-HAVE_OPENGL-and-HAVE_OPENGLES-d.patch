@@ -1,0 +1,28 @@
+From ccdfadf7edb3c79f1385a40cb89deb7811dd0164 Mon Sep 17 00:00:00 2001
+From: Julien Olivain <juju@cotds.org>
+Date: Sun, 17 Jan 2016 18:40:15 +0100
+Subject: [PATCH 3/8] config.h.cmake: force HAVE_OPENGL and HAVE_OPENGLES
+ defines
+
+Signed-off-by: Julien Olivain <juju@cotds.org>
+---
+ config.h.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/config.h.cmake b/config.h.cmake
+index ac3a178..be9baa2 100644
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -23,7 +23,8 @@
+ 
+ #cmakedefine WORDS_BIGENDIAN
+ 
+-#cmakedefine HAVE_OPENGL
++#define HAVE_OPENGL
++#define HAVE_OPENGLES
+ 
+ #cmakedefine HAVE_LIBCURL
+ 
+-- 
+2.5.0
+

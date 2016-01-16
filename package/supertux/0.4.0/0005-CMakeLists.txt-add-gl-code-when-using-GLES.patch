@@ -1,0 +1,30 @@
+From f646c406768b73fd22c686e27cf6e1f72a88325f Mon Sep 17 00:00:00 2001
+From: Julien Olivain <juju@cotds.org>
+Date: Sun, 17 Jan 2016 20:28:39 +0100
+Subject: [PATCH 5/8] CMakeLists.txt: add gl code when using GLES
+
+Signed-off-by: Julien Olivain <juju@cotds.org>
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b780c54..32e8c40 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -269,10 +269,10 @@ FILE(GLOB SUPERTUX_RESOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${PROJECT_BIN
+ FILE(GLOB TINYGETTEXT_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} external/tinygettext/src/*.cpp)
+ SET_SOURCE_FILES_PROPERTIES(${TINYGETTEXT_SOURCES_CXX} PROPERTIES COMPILE_DEFINITIONS HAVE_SDL)
+ 
+-IF(HAVE_OPENGL)
++IF(HAVE_OPENGL OR ENABLE_OPENGLES)
+   FILE(GLOB SUPERTUX_OPENGL_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/video/gl/*.cpp)
+   SET(SUPERTUX_SOURCES_CXX ${SUPERTUX_SOURCES_CXX} ${SUPERTUX_OPENGL_SOURCES})
+-ENDIF(HAVE_OPENGL)
++ENDIF(HAVE_OPENGL OR ENABLE_OPENGLES)
+ 
+ ## Build miniswig and generate miniswig wrapper
+ 
+-- 
+2.5.0
+

@@ -1,0 +1,39 @@
+From 69a3254eadc7a73ed8f24becf411d56040b2bde7 Mon Sep 17 00:00:00 2001
+From: Julien Olivain <juju@cotds.org>
+Date: Sun, 17 Jan 2016 17:30:12 +0100
+Subject: [PATCH 1/8] Add missing <sstream> inclusion
+
+Signed-off-by: Julien Olivain <juju@cotds.org>
+---
+ src/object/bonus_block.cpp         | 1 +
+ src/trigger/secretarea_trigger.cpp | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/object/bonus_block.cpp b/src/object/bonus_block.cpp
+index 1808add..26725ea 100644
+--- a/src/object/bonus_block.cpp
++++ b/src/object/bonus_block.cpp
+@@ -38,6 +38,7 @@
+ #include "supertux/sector.hpp"
+ 
+ #include <stdexcept>
++#include <sstream>
+ 
+ BonusBlock::BonusBlock(const Vector& pos, int data) :
+   Block(SpriteManager::current()->create("images/objects/bonus_block/bonusblock.sprite")),
+diff --git a/src/trigger/secretarea_trigger.cpp b/src/trigger/secretarea_trigger.cpp
+index 3242f45..1e85ead 100644
+--- a/src/trigger/secretarea_trigger.cpp
++++ b/src/trigger/secretarea_trigger.cpp
+@@ -26,6 +26,8 @@
+ #include "util/reader.hpp"
+ #include "util/writer.hpp"
+ 
++#include <sstream>
++
+ static const float MESSAGE_TIME=3.5;
+ 
+ SecretAreaTrigger::SecretAreaTrigger(const Reader& reader) :
+-- 
+2.5.0
+
