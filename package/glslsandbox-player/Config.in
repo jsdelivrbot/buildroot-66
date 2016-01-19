@@ -1,0 +1,12 @@
+config BR2_PACKAGE_GLSLSANDBOX_PLAYER
+	bool "glslsandbox-player"
+	depends on BR2_PACKAGE_HAS_LIBGLES
+	help
+	  GLSL Sandbox standalone player allow one to run and render
+	  (most of) nice shaders available online on the
+	  http://glslsandbox.com/ website, but without the need of an
+	  Internet connection, a web browser or any of its
+	  dependencies. Instead, the only requirement of
+	  glslsandbox-player is a working EGL and GLESv2 libraries.
+
+	  https://github.com/jolivain/glslsandbox-player
