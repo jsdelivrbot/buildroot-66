@@ -1,0 +1,22 @@
+diff -Naur a/backports/drivers/net/wireless/ti/wlcore/Makefile b/backports/drivers/net/wireless/ti/wlcore/Makefile
+--- a/backports/drivers/net/wireless/ti/wlcore/Makefile	2016-01-21 16:53:09.000000000 +0100
++++ b/backports/drivers/net/wireless/ti/wlcore/Makefile	2016-01-23 23:44:32.396393840 +0100
+@@ -12,7 +12,7 @@
+ ifneq ($(GIT_PATH),)
+ GIT_CHECK_PATH := $(GIT_PATH)
+ else
+-GIT_CHECK_PATH := $(PWD)/
++GIT_CHECK_PATH := $(CURDIR)/
+ endif
+ 
+ ifeq ($(wildcard $(GIT_CHECK_PATH).git/HEAD),)
+diff -Naur a/backports/drivers/net/wireless/ti/wlcore/release_version.h b/backports/drivers/net/wireless/ti/wlcore/release_version.h
+--- a/backports/drivers/net/wireless/ti/wlcore/release_version.h	2016-01-21 16:53:09.000000000 +0100
++++ b/backports/drivers/net/wireless/ti/wlcore/release_version.h	2016-01-23 23:44:44.583517335 +0100
+@@ -1,2 +1,6 @@
++#if ((__GNUC__ <= 4)&&(__GNUC_MINOR__ < 9))
+ static const char *wlcore_timestamp = __TIMESTAMP__;
++#else
++static const char *wlcore_timestamp = "timestamp not possible with gcc 4.9";
++#endif
+ static const char *wlcore_git_head = "ol_r8.a9.22";
